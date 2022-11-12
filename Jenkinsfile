@@ -12,13 +12,13 @@ pipeline{
 
  stage('Getting project from Git') {
             steps{
-      			checkout([$class: 'GitSCM', branches: [[name: '*/aziz']],
+      			checkout([$class: 'GitSCM', branches: [[name: '*/Syrine']],
 			extensions: [],
-			userRemoteConfigs: [[url: 'https://github.com/med-aziz-ben-haha/cicdfront.git']]])
+			userRemoteConfigs: [[url: 'https://github.com/SyrineSassi/devopsfront.git']]])
             }
         }
 
-
+/*
         stage('Cleaning the project') {
             steps{
                 sh "npm install"
@@ -35,12 +35,12 @@ pipeline{
             }
         }
 
-
+*/
 
 stage('Build Docker Image') {
                       steps {
                           script {
-                            sh 'docker build -t azizbenhaha/angular-app:latest .'
+                            sh 'docker build -t syrinesassi/angular-app:latest .'
                           }
                       }
                   }
@@ -50,7 +50,7 @@ stage('Build Docker Image') {
 
                   stage('login dockerhub') {
                                         steps {
-                                      sh 'echo dckr_pat_-SnwrdC_ELsL6it2JT6cgIcAlrs | docker login -u azizbenhaha --password-stdin'
+                                      sh 'echo dckr_pat_3cooqrMsOEE9QuUUuYU0OCQDGj4 | docker login -u syrinesassi --password Syrine1234'
                                             }
 		  }
 
@@ -60,7 +60,7 @@ stage('Build Docker Image') {
 
 	                      stage('Push Docker Image') {
                                         steps {
-                                   sh 'docker push azizbenhaha/angular-app:latest'
+                                   sh 'docker push syrinesassi/angular-app:latest'
                                             }
 		  }
 
@@ -69,7 +69,7 @@ stage('Build Docker Image') {
         stage('Run Angular Container') {
                       steps {
                           script {
-                            sh 'docker compose up -d'
+                            sh 'docker-compose up -d'
                           }
                       }
                   }
