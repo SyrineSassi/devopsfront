@@ -18,7 +18,7 @@ pipeline{
             }
         }
 
-/*
+
         stage('Cleaning the project') {
             steps{
                 sh "npm install"
@@ -35,7 +35,7 @@ pipeline{
             }
         }
 
-*/
+
 
 stage('Build Docker Image') {
                       steps {
