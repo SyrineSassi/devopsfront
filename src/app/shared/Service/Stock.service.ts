@@ -12,7 +12,7 @@ export class StockService {
   constructor(private httpClient: HttpClient) { }
 
   getAllStocks() {
-    return this.httpClient.get(`http://192.168.1.14:8089/SpringMVC/stock/retrieve-all-stocks`)
+    return this.httpClient.get(`http://192.168.1.19:8089/SpringMVC/stock/retrieve-all-stocks`)
   }
   addStock(stock : any) {
     return this.httpClient.post(`${this.API_URL}/add-stock`, stock)
