@@ -1,17 +1,6 @@
 version: "3.3"
 
-services:
-
-  app:
-
-    image: syrinesassi/angular-app:latest
-    container_name: angular_container
-    restart: on-failure
-    ports:
-      - 4200:80
-      
-      
-     services:
+services:    
   mysqldb:
     image: mysql:5.7
     container_name: mysqldbco
@@ -47,10 +36,13 @@ services:
       - .m2:/var/lib/jenkins/.m2
     stdin_open: true
     tty: true
-
+  angular-app:
+    depends_on:
+      - app
+    image: syrinesassi/angular-app:latest
+    container_name: angular_container
+    restart: on-failure
+    ports:
+      - 4200:80
 volumes:
   db:
-      
-      
-      
-    
